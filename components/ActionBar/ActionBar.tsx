@@ -2,15 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 export interface IButtonProps {
-  children?: string;
-  glyph?: string;
-  option?: string;
-  onClick?: () => void;
+  children: string;
+  onPress?: () => void;
 }
 
-const Button: React.FC<IButtonProps> = ({ children, onClick }) => {
+const Button: React.FC<IButtonProps> = ({ children, onPress }) => {
   return (
-    <TouchableOpacity onPress={onClick} style={styles.button}>
+    <TouchableOpacity onPress={onPress} style={styles.button}>
       <Text style={styles.buttonText}>{children}</Text>
     </TouchableOpacity>
   );
