@@ -19,7 +19,7 @@ const Button: React.FC<IButtonProps> = ({ children, compact, onClick }) => {
     },
     button: {
       paddingHorizontal: 9,
-      verticalAlign: 'middle',
+      textVerticalAlign: 'middle',
       whiteSpace: 'nowrap',
       borderRadius: 4,
       height: compact ? 26 : 36,
