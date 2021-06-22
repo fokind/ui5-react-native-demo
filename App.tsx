@@ -5,24 +5,32 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button } from './components';
+import { useState, useCallback, useLayoutEffect } from 'react';
 
 const HomeScreen = ({ navigation }) => {
-  React.useLayoutEffect(
+  const [data, setData] = useState<string[]>(['1', '2']);
+
+  const onAddPress = useCallback(() => {
+    setData([...data, 'new value']);
+  }, [data]);
+
+  useLayoutEffect(
     () =>
       navigation.setOptions({
         headerRight: () => (
           <View style={styles.actionBar}>
-            <Button onClick={() => navigation.navigate('Details')}>Добавить</Button>
+            <Button onClick={onAddPress}>Добавить</Button>
           </View>
         ),
       }),
-    [navigation]
+    [navigation, onAddPress]
   );
 
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Button onClick={() => navigation.navigate('Details')}>Кнопка</Button>
+      {data.map((e, i) => (
+        <Text key={i}>{e}</Text>
+      ))}
       <StatusBar style="auto" />
     </View>
   );
