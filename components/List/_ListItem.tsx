@@ -12,7 +12,7 @@ const ListItem: React.FC<IListItemProps> = ({ text, onClick }) => {
       borderBottomWidth: 1,
       borderBottomColor: 'rgb(228, 228, 228)',
       height: 44,
-      paddingX: 16,
+      paddingHorizontal: 16,
       display: 'flex',
       paddingLeft: 16,
       justifyContent: 'center',

@@ -1,11 +1,12 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import { FormInput } from '../../components';
 
 const DetailsScreen: React.FC<{ navigation: any }> = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
+    <View style={{ paddingHorizontal: 4 }}>
+      <FormInput placeholder="Default" />
     </View>
   );
 };
