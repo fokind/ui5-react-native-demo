@@ -4,14 +4,29 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { Button } from './components';
+import { Button, List, ListItem } from './components';
 import { useState, useCallback, useLayoutEffect } from 'react';
 
 const HomeScreen = ({ navigation }) => {
-  const [data, setData] = useState<string[]>(['1', '2']);
+  const [data, setData] = useState<{ title: string }[]>([
+    {
+      title: 'First Item',
+    },
+    {
+      title: 'Second Item',
+    },
+    {
+      title: 'Third Item',
+    },
+  ]);
 
   const onAddPress = useCallback(() => {
-    setData([...data, 'new value']);
+    setData([
+      ...data,
+      {
+        title: 'New value',
+      },
+    ]);
   }, [data]);
 
   useLayoutEffect(
@@ -26,11 +41,11 @@ const HomeScreen = ({ navigation }) => {
     [navigation, onAddPress]
   );
 
+  const renderItem = ({ item }) => <ListItem text={item.title} />;
+
   return (
     <View style={styles.container}>
-      {data.map((e, i) => (
-        <Text key={i}>{e}</Text>
-      ))}
+      <List data={data} renderItem={renderItem} />
       <StatusBar style="auto" />
     </View>
   );

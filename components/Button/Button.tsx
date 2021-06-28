@@ -16,6 +16,7 @@ const Button: React.FC<IButtonProps> = ({ children, compact, onClick }) => {
       lineHeight: 19.6,
       color: '#32363a',
       fontWeight: '400',
+      fontFamily: '"72", "72full", Arial, Helvetica, sans-serif',
     },
     button: {
       paddingHorizontal: 9,
