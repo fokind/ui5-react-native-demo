@@ -29,6 +29,10 @@ const HomeScreen = ({ navigation }) => {
     ]);
   }, [data]);
 
+  const onItemPress = useCallback(() => {
+    navigation.navigate('Details');
+  }, [navigation]);
+
   useLayoutEffect(
     () =>
       navigation.setOptions({
@@ -41,7 +45,7 @@ const HomeScreen = ({ navigation }) => {
     [navigation, onAddPress]
   );
 
-  const renderItem = ({ item }) => <ListItem text={item.title} />;
+  const renderItem = ({ item }) => <ListItem text={item.title} onClick={onItemPress} />;
 
   return (
     <View style={styles.container}>

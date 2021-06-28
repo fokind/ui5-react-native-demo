@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 export interface IListItemProps {
   text: string;
+  onClick?: () => void;
 }
 
-const ListItem: React.FC<IListItemProps> = ({ text }) => {
+const ListItem: React.FC<IListItemProps> = ({ text, onClick }) => {
   const styles = StyleSheet.create({
     item: {
       borderBottomWidth: 1,
@@ -25,9 +26,9 @@ const ListItem: React.FC<IListItemProps> = ({ text }) => {
     },
   });
   return (
-    <View style={styles.item}>
+    <TouchableOpacity onPress={onClick} style={styles.item}>
       <Text style={styles.text}>{text}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
